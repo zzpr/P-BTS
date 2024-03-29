@@ -55,7 +55,7 @@ save_path = '/home/zhang/models/'
 model_pre_path = save_path + str(model_name) +'/model.pth'
 
 # arch_names = ['__name__', '__doc__', 'nn', 'F', 'Downsample_block', 'Upsample_block', 'Unet']
-arch_names = list(CiT.__dict__.keys())
+arch_names = list(PBTS.__dict__.keys())
 loss_names = list(losses.__dict__.keys())
 loss_names.append('BCEWithLogitsLoss')
 
@@ -366,7 +366,7 @@ def main():
     # create model
     print(" = = = > creating model : %s" %args.arch)
     # model = UNet()
-    model = CiT.__dict__[args.arch](args)
+    model = PBTS.__dict__[args.arch](args)
 
     if load_weight:
         pretrained_dict = torch.load(model_pre_path, map_location='cpu')
